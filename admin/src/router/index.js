@@ -19,6 +19,8 @@ import Adlist from '../views/AdList.vue'
 
 import AdminUserEdit from '../views/AdminUserEdit.vue'
 import AdminUserlist from '../views/AdminUserList.vue'
+
+import register from '../views/register.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -27,6 +29,11 @@ const routes = [
     name:"login",
     component:Login,
     meta: { isPublic:true }
+  },
+  {
+    path:"/register",
+    name:"register",
+    component:register,
   },
 
   {

@@ -40,8 +40,11 @@ export default {
     afterUpload(res){
       this.$set(this.model,"icon",res.url)
       // this.model.icon  = res.url
+  
+      
     },
     async save() {
+      console.log(this.id);
       if (this.id) {
         await this.$http.put(`rest/items/${this.id}`, this.model);
       } else {
@@ -57,10 +60,13 @@ export default {
     async fetch() {
       const res = await this.$http.get(`rest/items/${this.id}`);
       this.model = res.data;
+      console.log(this.model);
+      
     }
   },
   created() {
     this.id && this.fetch();
+    console.log(this.id);    
   }
 };
 </script>

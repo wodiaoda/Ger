@@ -30,7 +30,20 @@ export default {
       const res = await this.$http.get("/rest/admin_users");
       this.items = res.data;
     },
-   
+    async remove(row) {
+      this.$confirm(`是否确定删除分类 "${row.name}"`, "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      }).then(async () => {
+         await this.$http.delete(`rest/admin_users/${row._id}`);
+        this.$message({
+          type: "success",
+          message: "删除成功!"
+        });
+        this.fetch()
+      });
+    }
   },
   created() {
     this.fetch();

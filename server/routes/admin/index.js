@@ -93,6 +93,7 @@ module.exports = app => {
         const token = jwt.sign({ id: user._id, }, app.get("secret"))
         res.send({ token })
     })
+    
     // 错误处理的函数
     app.use(async (err, req, res, next) => {
         res.status(err.statusCode || 500).send({
